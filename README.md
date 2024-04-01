@@ -36,7 +36,7 @@ $ npm install
 this template has added a TypeORM for working with database and postgreSQL connector added.
 postgrey database docker compose file also added in this repository to start.
 migration generation after entity creation or modification.
-`npx typeorm migration:generate ./migrations/init -d ormconfig.js`
+`npm run typeorm -- migration:generate ./migrations/test -d ormconfig.ts`
 
 apply migration in the begining of the application.
 `npm run typeorm migration:run -- -d .\ormconfig.ts`
