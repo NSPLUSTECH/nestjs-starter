@@ -33,6 +33,13 @@ $ npm install
 ```
 
 ## Running the app
+this template has added a TypeORM for working with database and postgreSQL connector added.
+postgrey database docker compose file also added in this repository to start.
+migration generation after entity creation or modification.
+`npx typeorm migration:generate ./migrations/init -d ormconfig.js`
+
+apply migration in the begining of the application.
+`npm run typeorm migration:run -- -d .\ormconfig.ts`
 
 ```bash
 # development
@@ -71,10 +78,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-
-
-migration generation after entity creation or modification.
-`npx typeorm migration:generate ./migrations/init -d ormconfig.js`
-
-apply migration in the begining of the application.
-`npm run typeorm migration:run -- -d .\ormconfig.ts`
