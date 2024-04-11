@@ -36,10 +36,19 @@ $ npm install
 this template has added a TypeORM for working with database and postgreSQL connector added.
 postgrey database docker compose file also added in this repository to start.
 migration generation after entity creation or modification.
-`npm run typeorm -- migration:generate ./migrations/test -d ormconfig.ts`
+```bash
+npm run typeorm -- migration:generate ./migrations/test -d ormconfig.ts
+```
 
 apply migration in the begining of the application.
-`npm run typeorm migration:run -- -d .\ormconfig.ts`
+
+```bash
+npm run typeorm migration:run -- -d .\ormconfig.ts
+```
+or simply
+```bash
+npm run prestart
+```
 
 ```bash
 # development
@@ -47,9 +56,6 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
@@ -69,11 +75,13 @@ $ npm run test:cov
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## NSP addition
+This is starter template for any nest js application. it included postgresql along with typeorm and its migrations.
+<br/>
+pending items
+<br/>
+[ ] BCcript based password storing.<br/>
+[ ] OAuth based login sample code.<br/>
 
 ## License
 
