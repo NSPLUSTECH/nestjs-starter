@@ -1,0 +1,66 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install
+    displayName: 'npm install'
+
+  - script: |
+      npm run build
+    displayName: 'Run Build'
+
+  - task: CopyFiles@2
+    displayName: Copy Dockerfile to Artifacts folder
+    inputs:
+      SourceFolder: './'
+      Contents: 'Dockerfile'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
+  - task: CopyFiles@2
+    displayName: Copy package json to Artifacts folder
+    inputs:
+      SourceFolder: './'
+      Contents: 'package*'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
+  - task: CopyFiles@2
+    displayName: Copy Docker Stack file to Artifacts folder
+    inputs:
+      SourceFolder: './'
+      Contents: 'docker-compose.yml'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
+
+  - task: CopyFiles@2
+    displayName: Copy DB file to Artifacts folder
+    inputs:
+      SourceFolder: './'
+      Contents: 'docker-compose.prod.yml'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
+  - task: CopyFiles@2
+    displayName: Copy build files to Artifacts folder
+    inputs:
+      SourceFolder: './dist/'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/dist/'
+      OverWrite: true
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'

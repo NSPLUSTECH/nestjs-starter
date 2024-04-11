@@ -1,4 +1,7 @@
-version: '3.8'
+version: '3.7'
+networks:
+  nest-network:
+    name: nest-network
 
 services:
   postgres:
@@ -7,6 +10,8 @@ services:
     restart: always
     ports:
       - "5432:5432"
+    networks:
+      - nest-network
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USERNAME}
