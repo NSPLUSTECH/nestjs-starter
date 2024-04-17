@@ -1,5 +1,5 @@
-import { User } from "./User.entity";
+import { UserEntity } from "./User.entity";
 
 export default [
-    User
+    UserEntity
 ]

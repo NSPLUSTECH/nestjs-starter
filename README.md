@@ -80,8 +80,8 @@ This is starter template for any nest js application. it included postgresql alo
 <br/>
 pending items
 <br/>
-[ ] BCcript based password storing.<br/>
-[ ] OAuth based login sample code.<br/>
+- [ ] BCcript based password storing.<br/>
+- [ ] OAuth based login sample code.<br/>
 
 ## License
 

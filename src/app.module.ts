@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from './Entities';
 import services from './Services';
 import controllers from './Controllers';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -19,7 +20,12 @@ import controllers from './Controllers';
       entities: entities,
       autoLoadEntities: true,
     }),
-    TypeOrmModule.forFeature(entities)
+    TypeOrmModule.forFeature(entities),
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '60s' },
+    })
   ],
   controllers: controllers,
   providers: services,
