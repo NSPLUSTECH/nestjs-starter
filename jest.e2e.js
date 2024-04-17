@@ -1,5 +1,9 @@
-{
+module.exports = {
   "moduleFileExtensions": ["js", "json", "ts"],
+  "moduleDirectories": [
+    "node_modules",
+    __dirname
+  ],
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
